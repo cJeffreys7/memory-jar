@@ -32,11 +32,11 @@ const App = (props) => {
   };
 
   const handleSignUpOrSignIn = (email) => {
-    const result = authService.getUser();
+    // const result = authService.getUser();
     setCurrentUser({
       id: email
     });
-    setUser(result.email);
+    setUser(authService.getUser()?.email);
   };
 
   useEffect(() => {
