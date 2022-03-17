@@ -36,7 +36,7 @@ const App = (props) => {
     setCurrentUser({
       id: email
     });
-    setUser(authService.getUser()?.email);
+    setUser(email);
   };
 
   useEffect(() => {
