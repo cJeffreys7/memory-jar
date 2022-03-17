@@ -17,6 +17,7 @@ const getToken = () => {
         };
     } else {
         localStorage.removeItem('token');
+        token = null;
     };
     return token;
 }
