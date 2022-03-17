@@ -6,6 +6,7 @@ const setToken = (token) => {
 
 const getToken = () => {
     let token = localStorage.getItem('token') || null;
+    console.log('JSON Web Token: ', token);
     console.log('JSON Web Token: ', token ? JSON.parse(Buffer.from(token.split('.')[1], 'base64')) : 'NULL');
     if (token) {
         const payload = JSON.parse(Buffer.from(token.split('.')[1], 'base64'));
