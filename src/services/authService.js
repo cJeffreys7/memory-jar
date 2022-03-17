@@ -61,24 +61,10 @@ const signUpUser = async (name, email, password) => {
                 console.log(result);
             } else {
                 resolve(result);
-                // console.log('Last Auth User key: ', `CognitoIdentityServiceProvider.${process.env.REACT_APP_COGNITO_ID}.LastAuthUser`);
                 const lastAuthUser = result.user.storage.getItem(`CognitoIdentityServiceProvider.${process.env.REACT_APP_COGNITO_ID}.LastAuthUser`);
-                // console.log('LAST AUTH USER: ', lastAuthUser);
                 const idToken = result.user.storage.getItem(`CognitoIdentityServiceProvider.${process.env.REACT_APP_COGNITO_ID}.${lastAuthUser}.idToken`);
-                // console.log('RESULT: ', result);
-                // console.log('Signup successful: ', idToken);
                 tokenService.setToken(idToken);
-                // tokenService.setToken(result.getJwtToken());
             }
-            // onSuccess: result => {
-            //     resolve(result);
-            //     tokenService.setToken(result.getIdToken().getJwtToken());
-            //     console.log('Login successful: ', result);
-            // },
-            // onFailure: err => {
-            //     reject(err);
-            //     console.log('Login failed: ', err);
-            // }
         }))
     );
 }
