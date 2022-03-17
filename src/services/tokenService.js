@@ -6,6 +6,7 @@ const setToken = (token) => {
 
 const getToken = () => {
     let token = localStorage.getItem('token');
+    console.log('TOKEN TYPE: ', typeof token);
     console.log('TOKEN: ', token);
     console.log('TOKEN BANG: ', !token);
     console.log('TOKEN DOUBLE BANG: ', !!token);
