@@ -16,12 +16,10 @@ import MemoryForm from '../pages/MemoryForm';
 
 // services
 import * as authService from '../services/authService';
-// import * as tokenService from '../services/tokenService';
 
 import './App.scss';
 
 const App = (props) => {
-  // tokenService.removeToken();
   const { setCurrentUser } = props;
   const [user, setUser] = useState(authService.getUser()?.email);
   const navigate = useNavigate();
