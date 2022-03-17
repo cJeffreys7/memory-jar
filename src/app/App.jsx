@@ -34,13 +34,13 @@ const App = (props) => {
   const handleSignUpOrSignIn = (email) => {
     // const result = authService.getUser();
     setCurrentUser({
-      id: email
+      id: email.toLowerCase()
     });
     setUser(email);
   };
 
   useEffect(() => {
-      setCurrentUser({id: authService.getUser()?.email});
+      setCurrentUser({id: authService.getUser()?.email.toLowerCase()});
       // eslint-disable-next-line
   }, []);
 
