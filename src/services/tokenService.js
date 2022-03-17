@@ -8,7 +8,7 @@ const getToken = () => {
     let token = localStorage.getItem('token') || null;
     console.log('JSON Web Token: ', token);
     console.log('JSON Web Token: ', token ? JSON.parse(Buffer.from(token.split('.')[1], 'base64')) : 'NULL');
-    if (token) {
+    if (token !== null) {
         const payload = JSON.parse(Buffer.from(token.split('.')[1], 'base64'));
         // 9000 seconds is 2.5 hours
         // console.log('Token time: ', payload.exp + 60000);
