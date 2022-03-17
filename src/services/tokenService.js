@@ -5,8 +5,17 @@ const setToken = (token) => {
 };
 
 const getToken = () => {
-    let token = localStorage.getItem('token');
+    let token = localStorage.getItem('token') || null;
     console.log('TOKEN: ', token);
+    if (token === null) {
+        console.log('TOKEN IS NULL');
+    }
+    if (!!token === false) {
+        console.log('TOKEN IS FALSE');
+    }
+    if (!token) {
+        console.log('TOKEN IS TRUE');
+    }
     if (token !== null) {
         const payload = JSON.parse(Buffer.from(token.split('.')[1], 'base64'));
         // 9000 seconds is 2.5 hours
