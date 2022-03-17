@@ -1,0 +1,92 @@
+$full-height: 90vh;
+$full-slider-width: 92vh;
+$min-height: 40vw;
+
+.memory-wrapper {
+    max-width: 90vw;
+    display: flex;
+    justify-content: center;
+
+    .border {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        border: 2px solid rgb(196, 196, 196);
+        padding: 16px;
+
+        .image {
+
+            .slick-slider {
+                display: flex;
+                justify-content: center;
+                max-width: $full-slider-width;
+                width: 85vw;
+
+                .slick-prev {
+                    background-color: black;
+                    padding-top: 2px;
+                    width: 24px;
+                    height: 32px;
+                }
+    
+                .slick-next {
+                    background-color: black;
+                    padding-top: 2px;
+                    width: 24px;
+                    height: 32px;
+                }
+
+                .slick-list {
+                    min-height: $min-height;
+                    min-width: $min-height;
+
+                    .slick-track {
+                        display: flex;
+                        align-items: center;
+        
+                        .slick-slide {
+                            display: flex;
+                            justify-content: center;
+            
+                            div {
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                // position: relative;
+                                // overflow: hidden;
+            
+                                img {
+                                    max-height: $full-height;
+                                    min-height: $min-height;
+                                    max-width: $full-height;
+                                    min-width: $min-height;
+                                }
+                            }
+                        }
+                    }
+                }
+    
+            }
+        }
+
+
+        .action-button-wrapper {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+
+            .favorite-button {
+                display: flex;
+                justify-content: flex-end;
+                align-items: flex-end;
+
+                .MuiButton-root {
+                    position: absolute;
+                    background-color: white;
+                }
+            }
+        }
+    }
+
+}

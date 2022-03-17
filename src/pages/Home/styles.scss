@@ -1,0 +1,17 @@
+.home-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 64px 2vw 0;
+
+
+    .memory-jar-previews {
+        margin-top: 32px;
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-auto-rows: 200px;
+        gap: 9vw;
+    }
+}

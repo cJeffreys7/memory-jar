@@ -1,0 +1,10 @@
+$fontSize: 8vw;
+
+.action-bar {
+    display: flex;
+    gap: 1.5vw;
+}
+
+:export {
+    fontSize: $fontSize;
+}

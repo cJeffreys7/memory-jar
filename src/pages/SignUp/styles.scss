@@ -1,0 +1,53 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    img {
+        max-width: 196px;
+    }
+
+    .signup-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+
+        form {
+            width: 300px;
+
+            .form-input-border {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin: 16px 0;
+                padding: 16px;
+                border: 2px solid #c8c8c8;
+
+                .input {
+                    margin: 8px 0;
+                    width: 100%;
+                }
+
+            }
+    
+            Button {
+                margin-top: 48px;
+                width: 100%;
+            }
+    
+        }
+
+        .signin-prompt {
+            margin: 48px 0 8px;
+            font-weight: 500;
+        }
+    
+        a {
+            text-decoration: none;
+            color: #c43232;
+        }
+
+    }
+
+}

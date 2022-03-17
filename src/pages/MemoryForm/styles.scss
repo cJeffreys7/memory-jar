@@ -1,0 +1,23 @@
+.memory-form-wrapper {
+    display: flex;
+    justify-content: center;
+    margin: 64px 2vw 0;
+
+    .memory-form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 70%;
+
+        .input {
+            margin: 32px 0 24px;
+            width: 100%;
+        }
+
+        .Button {
+            margin-top: 32px;
+            width: 100%;
+        }
+    }
+}

@@ -1,0 +1,13 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
+	<title>memoryjar_logo</title>
+	<style>
+		tspan { white-space:pre } 
+		.t0 { font-size: 48px;fill: #000000;font-weight: 400;font-family: "Amsterdam-One", "Amsterdam" } 
+	</style>
+	<text id="Memory  Jar" style="transform: matrix(1,0,0,1,127,97)" >
+		<tspan x="-93.2" y="0" class="t0">M</tspan><tspan  y="0" class="t0">e</tspan><tspan  y="0" class="t0">m</tspan><tspan  y="0" class="t0">o</tspan><tspan  y="0" class="t0">r</tspan><tspan  y="0" class="t0">y</tspan><tspan  y="0" class="t0">
+</tspan>
+		<tspan x="-63" y="115.2" class="t0">J</tspan><tspan  y="115.2" class="t0">a</tspan><tspan  y="115.2" class="t0">r
+</tspan>
+	</text>
+</svg>
