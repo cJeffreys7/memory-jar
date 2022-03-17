@@ -20,7 +20,7 @@ const getToken = () => {
     if (Object.keys(token).length === 0) {
         console.log('TOKEN HAS NO KEYS');
     }
-    if (token !== 'null') {
+    if (token) {
         const payload = JSON.parse(Buffer.from(token.split('.')[1], 'base64'));
         // 9000 seconds is 2.5 hours
         // console.log('Token time: ', payload.exp + 60000);
