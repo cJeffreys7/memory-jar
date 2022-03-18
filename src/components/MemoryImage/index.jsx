@@ -15,7 +15,7 @@ const MemoryImage = ({ src, alt }) => {
             />
             {!imageLoaded && 
                 <div className='skeleton-wrapper'>
-                    <Skeleton variant='rectangular' animation='wave' width={1024} height={1024} />
+                    <Skeleton variant='rectangular' width={1024} height={1024} />
                 </div>
             }
         </div>
