@@ -38,19 +38,22 @@ const SignIn = (props) => {
         });
     }
 
-    const handleSubmit = e => {
+    const handleSubmit = async e => {
         e.preventDefault();
-        authService.loginUser(email, password)
-        .then((result) => {
+        try {
+            await authService.loginUser(email, password);
             props.handleSignUpOrSignIn(email);
+            setFormData(initialFormData);
+            setErrors(initialErrors);
             navigate('/');
-        })
-        .catch((error) => {
-            console.log('Error loging in: ', error);
-        })
-        setFormData(initialFormData);
-        setErrors(initialErrors);
-    }
+        } catch (error) {
+            console.log(error);
+            setErrors({
+                ...errors,
+                feedbackErrorText: error.message
+            });
+        };
+    };
 
     const { 
             email, 
@@ -62,7 +65,8 @@ const SignIn = (props) => {
             emailHelperText, 
             passwordEntry, 
             passwordError, 
-            passwordHelperText 
+            passwordHelperText,
+            feedbackErrorText
         } = errors;
 
     useEffect(() => {
@@ -231,6 +235,7 @@ const SignIn = (props) => {
                         disabled={isFormInvalid()}
                     />
                 </form>
+                <h4 className='feedback-error-message'>{feedbackErrorText}</h4>
                 <span className='signup-prompt'>Don't have an account?</span>
                 <Link to='/signup'>Sign up</Link>
             </div>

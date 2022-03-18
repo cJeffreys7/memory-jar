@@ -47,9 +47,13 @@ const SignUp = (props) => {
             props.handleSignUpOrSignIn(email);
             setFormData(initialFormData);
             setErrors(initialErrors);
-            navigate('/')
+            navigate('/');
         } catch (error) {
-            console.log('Signup failed. Error: ', error);
+            console.log(error);
+            setErrors({
+                ...errors,
+                feedbackErrorText: error.message
+            });
         };
 
     };
@@ -72,7 +76,8 @@ const SignUp = (props) => {
             passwordHelperText,
             confirmPasswordEntry,
             confirmPasswordError,
-            confirmPasswordHelperText
+            confirmPasswordHelperText,
+            feedbackErrorText
         } = errors;
 
     useEffect(() => {
@@ -289,6 +294,7 @@ const SignUp = (props) => {
                         disabled={isFormInvalid()}
                     />
                 </form>
+                <h4 className='feedback-error-message'>{feedbackErrorText}</h4>
                 <span className='signin-prompt'>Already have an account?</span>
                 <Link to='/signin'>Sign in</Link>
             </div>
