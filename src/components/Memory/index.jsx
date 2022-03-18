@@ -12,7 +12,6 @@ import DialogModal from '../MUI/DialogModal';
 // assets
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import DefaultImg from '../../assets/memoryjar_logo.svg';
-import Skeleton from '@mui/material/Skeleton';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 
@@ -147,21 +146,7 @@ const Memory = (props) => {
                             memories.map(
                                 memory => <MemoryImage src={memory.image.src} alt={memory.image.alt} key={memory.image.key} />
                                 )
-                            :
-                            <img src={DefaultImg} alt='Memory Jar Logo'/>
-                            //     <div>
-                            //         <Skeleton variant='rectangular' width={1024} height={40} />
-                            //         <Skeleton variant='circular' width={40} height={40} />
-                            //         <Skeleton variant='rectangular' width={1024} height={40} />
-                            //         <Skeleton variant='circular' width={40} height={40} />
-                            //         <Skeleton variant='rectangular' width={1024} height={40} />
-                            //         <Skeleton variant='circular' width={40} height={40} />
-                            //         <Skeleton variant='rectangular' width={1024} height={40} />
-                            //         <Skeleton variant='circular' width={40} height={40} />
-                            //         <Skeleton variant='rectangular' width={1024} height={40} />
-                            //         <Skeleton variant='circular' width={40} height={40} />
-                            //         <Skeleton variant='rectangular' width={1024} height={424} />
-                            //     </div>
+                            : <img src={DefaultImg} alt='Memory Jar Logo'/>
                         }
                     </Slider>
                 </div>
