@@ -22,6 +22,7 @@ import * as memoryJarService from '../../services/memoryJarService'
 import './styles.scss'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import MemoryImage from '../MemoryImage';
 
 const theme = createTheme({
     palette: {
@@ -55,7 +56,7 @@ const Memory = (props) => {
         autoplaySpeed: 5000,
         swipe: true,
         fade: true,
-        speed: 1500,
+        speed: 1000,
         infinite: true,
         pauseOnHover: true,
         className: 'carousel',
@@ -144,27 +145,23 @@ const Memory = (props) => {
                     <Slider {...settings}>
                         {memories.length ?
                             memories.map(
-                                memory => <img
-                                            src={memory.image.src}
-                                            alt={memory.image.alt}
-                                            key={memory.image.key} 
-                                            />
-                                        )
-                            // : <img src={DefaultImg} alt='Memory Jar Logo'/>
+                                memory => <MemoryImage src={memory.image.src} alt={memory.image.alt} key={memory.image.key} />
+                                )
                             :
-                                <div>
-                                    <Skeleton variant='rectangular' width={1024} height={40} />
-                                    <Skeleton variant='circular' width={40} height={40} />
-                                    <Skeleton variant='rectangular' width={1024} height={40} />
-                                    <Skeleton variant='circular' width={40} height={40} />
-                                    <Skeleton variant='rectangular' width={1024} height={40} />
-                                    <Skeleton variant='circular' width={40} height={40} />
-                                    <Skeleton variant='rectangular' width={1024} height={40} />
-                                    <Skeleton variant='circular' width={40} height={40} />
-                                    <Skeleton variant='rectangular' width={1024} height={40} />
-                                    <Skeleton variant='circular' width={40} height={40} />
-                                    <Skeleton variant='rectangular' width={1024} height={424} />
-                                </div>
+                            <img src={DefaultImg} alt='Memory Jar Logo'/>
+                            //     <div>
+                            //         <Skeleton variant='rectangular' width={1024} height={40} />
+                            //         <Skeleton variant='circular' width={40} height={40} />
+                            //         <Skeleton variant='rectangular' width={1024} height={40} />
+                            //         <Skeleton variant='circular' width={40} height={40} />
+                            //         <Skeleton variant='rectangular' width={1024} height={40} />
+                            //         <Skeleton variant='circular' width={40} height={40} />
+                            //         <Skeleton variant='rectangular' width={1024} height={40} />
+                            //         <Skeleton variant='circular' width={40} height={40} />
+                            //         <Skeleton variant='rectangular' width={1024} height={40} />
+                            //         <Skeleton variant='circular' width={40} height={40} />
+                            //         <Skeleton variant='rectangular' width={1024} height={424} />
+                            //     </div>
                         }
                     </Slider>
                 </div>
