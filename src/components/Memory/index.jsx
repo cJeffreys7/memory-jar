@@ -64,8 +64,10 @@ const Memory = (props) => {
     };
 
     const editMemory = () => {
-        const memoryId = memories[slideIndex].image.key;
-        navigate(`/jars/${currentMemoryJar.jarId}/memories/${memoryId}`)
+        if (memories[slideIndex]?.image) {
+            const memoryId = memories[slideIndex].image.key;
+            navigate(`/jars/${currentMemoryJar.jarId}/memories/${memoryId}`)
+        }
     }
 
     const openDeleteMemoryModal = () => {
@@ -87,7 +89,7 @@ const Memory = (props) => {
     }
 
     const favoriteMemory = async () => {
-        if (memories.length) {
+        if (memories[slideIndex]?.image) {
             const result = await memoryJarService.favoriteMemory(
                     currentMemoryJar,
                     currentMemoryJar.memories[slideIndex].filename,
@@ -162,7 +164,7 @@ const Memory = (props) => {
                         }
                     </Slider>
                 </div>
-                {!(recentMemories?.length || favoriteMemories?.length) && 
+                {(currentMemoryJar && memories?.length > 0) && 
                     <div className='action-button-wrapper'>
                         {currentMemoryJar?.admins?.includes(currentUser?.id) &&
                             <div className='admin-buttons'>
