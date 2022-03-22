@@ -104,7 +104,7 @@ const MemoryForm = (props) => {
     };
 
     const isFormInvalid = () => {
-        return !(title && description);
+        return !(title && description && (file || currentMemoryJar));
     };
 
     useEffect(() => {
