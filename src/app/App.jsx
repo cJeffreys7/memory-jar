@@ -51,14 +51,14 @@ const App = (props) => {
           <AppBar handleLogout={handleLogout}/>
         }
         <Routes>
-          <Route path='/' element={user ? <Home /> : <Navigate to='/SignIn'/>} />
-          <Route path='/SignIn' element={<SignIn handleSignUpOrSignIn={handleSignUpOrSignIn}/>}/>
-          <Route path='/SignUp' element={<SignUp handleSignUpOrSignIn={handleSignUpOrSignIn}/>}/>
-          <Route path='/jars/new' element={user ? <JarForm /> : <Navigate to='/SignIn'/>}/>
-          <Route path='/jars/:id/edit' element={user ? <JarForm /> : <Navigate to='/SignIn'/>}/>
-          <Route path='/jars/:id' element={user ? <JarDetails /> : <Navigate to='/SignIn' />}/>
-          <Route path='/jars/:id/memories/new' element={user ? <MemoryForm /> : <Navigate to='/SignIn' />}/>
-          <Route path='/jars/:id/memories/:memoryId' element={user ? <MemoryForm /> : <Navigate to='/SignIn' />}/>
+          <Route path='/home' element={user ? <Home /> : <Navigate to='/'/>} />
+          <Route path='/' element={<SignIn handleSignUpOrSignIn={handleSignUpOrSignIn}/>}/>
+          <Route path='/signup' element={<SignUp handleSignUpOrSignIn={handleSignUpOrSignIn}/>}/>
+          <Route path='/jars/new' element={user ? <JarForm /> : <Navigate to='/'/>}/>
+          <Route path='/jars/:id/edit' element={user ? <JarForm /> : <Navigate to='/'/>}/>
+          <Route path='/jars/:id' element={user ? <JarDetails /> : <Navigate to='/' />}/>
+          <Route path='/jars/:id/memories/new' element={user ? <MemoryForm /> : <Navigate to='/' />}/>
+          <Route path='/jars/:id/memories/:memoryId' element={user ? <MemoryForm /> : <Navigate to='/' />}/>
         </Routes>
       </>
     </div>

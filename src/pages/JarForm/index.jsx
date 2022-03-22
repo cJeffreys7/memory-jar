@@ -119,7 +119,13 @@ const JarForm = (props) => {
         } else {
             result = memoryJarService.saveJar(formattedFormData);
         }
-        if (result) navigate('/');
+        if (result) {
+            if (currentMemoryJar) {
+                navigate(-1)
+            } else {
+                navigate('/home');
+            }
+        };
     }
 
     const { title, description } = formData;

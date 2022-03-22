@@ -46,7 +46,7 @@ const SignIn = (props) => {
             props.handleSignUpOrSignIn(email);
             setFormData(initialFormData);
             setErrors(initialErrors);
-            navigate('/');
+            navigate('/home');
         } catch (error) {
             console.log(error);
             setErrors({

@@ -48,7 +48,7 @@ const SignUp = (props) => {
             props.handleSignUpOrSignIn(email);
             setFormData(initialFormData);
             setErrors(initialErrors);
-            navigate('/');
+            navigate('/home');
         } catch (error) {
             console.log(error);
             setErrors({
@@ -297,7 +297,7 @@ const SignUp = (props) => {
                 </form>
                 <h4 className='error-message'>{feedbackErrorText}</h4>
                 <span className='signin-prompt'>Already have an account?</span>
-                <Link className='call-to-action' to='/signin'>Sign in</Link>
+                <Link className='call-to-action' to='/'>Sign in</Link>
             </div>
         </div>
     );

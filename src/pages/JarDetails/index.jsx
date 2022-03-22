@@ -30,7 +30,7 @@ const JarDetails = (props) => {
 
     const deleteJar = async () => {
         const result = await memoryJarService.deleteJar(id);
-        if (result) navigate('/');
+        if (result) navigate('/home');
     }
 
     useEffect(() => {
