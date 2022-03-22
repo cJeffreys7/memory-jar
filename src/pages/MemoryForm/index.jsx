@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { createTheme } from '@mui/material';
 
 // components
 import Dropzone from '../../components/Dropzone';
@@ -14,6 +15,7 @@ import * as memoryJarService from '../../services/memoryJarService';
 import DefaultImg from '../../assets/memoryjar_logo.svg';
 
 import './styles.scss';
+import variables from '../../styles.scss';
 
 const initialErrors = {};
 
@@ -147,6 +149,14 @@ const MemoryForm = (props) => {
         // eslint-disable-next-line
     }, [title, description]);
 
+    const theme = createTheme({
+        palette: {
+            primary: {
+                main: variables.callToActionColor
+            },
+        }
+    });
+
     return (
         <div className='memory-form-wrapper'>
             <form className='memory-form' onSubmit={handleSubmit}>
@@ -174,8 +184,13 @@ const MemoryForm = (props) => {
                     onChange={handleChange}
                     variant='outlined'
                 />
-                <Dropzone canEdit={currentMemoryJar ? false : true} defaultImg={defaultImg} handleAddFile={handleAddFile}/>
+                <Dropzone
+                    canEdit={currentMemoryJar ? false : true}
+                    defaultImg={defaultImg}
+                    handleAddFile={handleAddFile}
+                />
                 <Button
+                    theme={theme}
                     type='submit'
                     label='Submit'
                     disabled={isFormInvalid()}

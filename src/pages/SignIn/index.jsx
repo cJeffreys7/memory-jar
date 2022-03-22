@@ -14,6 +14,7 @@ import Icon from '../../assets/memoryjar_icon.svg'
 import LogoText from '../../assets/memoryjar_logo_text_dark.svg'
 
 import './styles.scss'
+import variables from '../../styles.scss';
 
 const initialFormData = {
     email: '',
@@ -103,24 +104,24 @@ const SignIn = (props) => {
             error = {
                 emailError: true,
                 emailHelperText: 'Please enter your email'
-            }
+            };
         } else {
             const emailExpression = /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:+)\])/g;
             const emailRegExp = new RegExp(emailExpression)
             if (email.match(emailRegExp)) {
                 error = {
                     emailError: false
-                }
+                };
             } else {
                 error = {
                     emailError: true,
                     emailHelperText: 'Invalid email'
-                }
-            }
-        }
+                };
+            };
+        };
 
         return error;
-    }
+    };
 
     const passwordValidation = () => {
         let error = {};
@@ -128,18 +129,18 @@ const SignIn = (props) => {
             error = {
                 passwordError: true,
                 passwordHelperText: 'Please enter a password'
-            }
+            };
         } else {
             error = {
                 passwordError: false
-            }
-        }
+            };
+        };
         return error;
-    }
+    };
 
     const isFormInvalid = () => {
         return (!(email && password) || errors.passwordError || errors.emailError);
-    }
+    };
 
     const theme = createTheme({
         palette: {
@@ -147,7 +148,13 @@ const SignIn = (props) => {
                 main: '#000000'
             },
         }
-    })
+    });
+
+    const signInInputSX = {
+        maxWidth: 1280,
+        backgroundColor: variables.primaryColor,
+        borderRadius: '32px'
+    }
 
     // const resetPassword = (username) => {
     //     const poolData = {
@@ -216,6 +223,7 @@ const SignIn = (props) => {
                         helperText={emailError ? emailHelperText : ''}
                         value={email}
                         onChange={handleChange}
+                        sx={signInInputSX}
                     />
                     <FormInput 
                         className='input'
@@ -226,6 +234,7 @@ const SignIn = (props) => {
                         helperText={passwordError ? passwordHelperText : ''}
                         value={password}
                         onChange={handleChange}
+                        sx={signInInputSX}
                     />
                     {/* <Link to='/signin'>Forgot your password?</Link> */}
                     <Button 
@@ -235,9 +244,9 @@ const SignIn = (props) => {
                         disabled={isFormInvalid()}
                     />
                 </form>
-                <h4 className='feedback-error-message'>{feedbackErrorText}</h4>
+                <h4 className='error-message'>{feedbackErrorText}</h4>
                 <span className='signup-prompt'>Don't have an account?</span>
-                <Link to='/signup'>Sign up</Link>
+                <Link className='call-to-action' to='/signup'>Sign up</Link>
             </div>
         </div>
     );

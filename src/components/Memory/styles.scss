@@ -1,7 +1,6 @@
 $full-height: 90vh;
 $full-slider-width: 92vh;
 $min-height: 40vw;
-$primary-color: #dde9e4;
 
 .memory-wrapper {
     max-width: 90vw;
@@ -9,7 +8,6 @@ $primary-color: #dde9e4;
     justify-content: center;
 
     .border {
-        background-color: $primary-color;
         display: flex;
         flex-direction: column;
         justify-content: space-between;

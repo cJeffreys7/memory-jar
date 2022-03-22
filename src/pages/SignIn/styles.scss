@@ -18,7 +18,7 @@
             flex-direction: column;
             align-items: center;
             width: 300px;
-    
+
             .input {
                 margin: 8px 0;
                 width: 100%;
@@ -26,28 +26,23 @@
                 .css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root {
                     border-radius: 32px;
                 }
-                
             }
-    
+
             Button {
                 margin-top: 48px;
                 width: 100%;
             }
-    
+
         }
 
-        .feedback-error-message {
-            color: red;
-        }
-    
         .signup-prompt {
             margin: 24px 0 8px;
             font-weight: 500;
         }
-    
+
         a {
             text-decoration: none;
-            color: #c43232;
+            font-weight: 700;
         }
     }
 

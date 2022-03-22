@@ -14,6 +14,7 @@ import { createTheme } from '@mui/material';
 import * as authService from '../../services/authService'
 
 import './styles.scss'
+import variables from '../../styles.scss';
 
 const initialFormData = {
     name: '',
@@ -241,7 +242,7 @@ const SignUp = (props) => {
             <img src={LogoText} alt='Memory Jar' />
             <div className='signup-wrapper'>
                 <form onSubmit={handleSubmit}>
-                    <div className='form-input-border'>
+                    <div className='form-input-border' style={{backgroundColor: variables.primaryColor }} >
                         <FormInput 
                             className='input'
                             name='name'
@@ -294,9 +295,9 @@ const SignUp = (props) => {
                         disabled={isFormInvalid()}
                     />
                 </form>
-                <h4 className='feedback-error-message'>{feedbackErrorText}</h4>
+                <h4 className='error-message'>{feedbackErrorText}</h4>
                 <span className='signin-prompt'>Already have an account?</span>
-                <Link to='/signin'>Sign in</Link>
+                <Link className='call-to-action' to='/signin'>Sign in</Link>
             </div>
         </div>
     );

@@ -11,6 +11,7 @@ import AddIcon from '@mui/icons-material/AddCircle';
 import DeleteIcon from '@mui/icons-material/Delete';
 
 import Style from './styles.scss'
+import variables from '../../styles.scss';
 
 const MemoryJarActionBar = (props) => {
     const { currentUser, currentMemoryJar, clearCurrentMemoryJar, jarId, deleteJar } = props;
@@ -18,19 +19,43 @@ const MemoryJarActionBar = (props) => {
     const iconSize = Style.fontSize;
 
     const configEditIconButton = {
-        icon: <EditIcon sx={{ fontSize: iconSize}}/>
+        icon: <EditIcon sx={{
+            fontSize: iconSize,
+            color: variables.callToActionColor,
+            backgroundColor: variables.primaryColor,
+            borderRadius: '16px'
+            }}
+        />
     };
 
     const configShareIconButton = {
-        icon: <ShareIcon sx={{ fontSize: iconSize}}/>
+        icon: <ShareIcon sx={{
+            fontSize: iconSize,
+            color: variables.callToActionColor,
+            backgroundColor: variables.primaryColor,
+            borderRadius: '16px'
+            }}
+        />
     };
 
     const configAddIconButton = {
-        icon: <AddIcon sx={{ fontSize: iconSize}}/>
+        icon: <AddIcon sx={{
+            fontSize: iconSize,
+            color: variables.callToActionColor,
+            backgroundColor: variables.primaryColor,
+            borderRadius: '16px'
+            }}
+        />
     };
 
     const configDeleteIconButton = {
-        icon: <DeleteIcon sx={{ fontSize: iconSize}}/>
+        icon: <DeleteIcon sx={{
+            fontSize: iconSize,
+            color: variables.callToActionColor,
+            backgroundColor: variables.primaryColor,
+            borderRadius: '16px'
+            }}
+        />
     };
 
     const editMemoryJar = e => {

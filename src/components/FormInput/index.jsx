@@ -1,7 +1,7 @@
 import React from 'react';
 import { TextField } from '@mui/material';
 
-const FormInput = ({ className, name, type, label, placeholder, error, helperText, value, onChange, multiline, rows, variant }) => {
+const FormInput = ({ className, name, type, label, placeholder, error, helperText, value, onChange, multiline, rows, variant, sx }) => {
     return (
         <TextField
             className={className}
@@ -16,9 +16,7 @@ const FormInput = ({ className, name, type, label, placeholder, error, helperTex
             multiline={multiline}
             rows={rows ? rows : 1}
             variant={variant}
-            sx = {{
-                maxWidth: 1280,
-            }}
+            sx = {sx}
         />
     );
 };

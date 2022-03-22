@@ -1,3 +1,9 @@
+$primary-color: #dde9e4;
+// $call-to-action-color: #00bfa5;
+// $call-to-action-color: #009984;
+$call-to-action-color: #009d87;
+$error-color: #c43232;
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -11,4 +17,22 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.primary-element {
+  color: $primary-color;
+}
+
+.call-to-action {
+  color: $call-to-action-color;
+}
+
+.error-message {
+  color: $error-color;
+}
+
+:export {
+  primaryColor: $primary-color;
+  callToActionColor: $call-to-action-color;
+  errorColor: $error-color;
 }

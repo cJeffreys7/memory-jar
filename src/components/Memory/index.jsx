@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import Slider from 'react-slick';
 import IconButton from '../MUI/IconButton';
 import DialogModal from '../MUI/DialogModal';
+import MemoryImage from '../MemoryImage';
 
 // assets
 import FavoriteIcon from '@mui/icons-material/Favorite';
@@ -21,7 +22,7 @@ import * as memoryJarService from '../../services/memoryJarService'
 import './styles.scss'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import MemoryImage from '../MemoryImage';
+import variables from '../../styles.scss';
 
 const theme = createTheme({
     palette: {
@@ -121,13 +122,19 @@ const Memory = (props) => {
 
     const configEditButton = {
         theme: theme,
-        icon: <EditIcon />,
+        icon: <EditIcon sx={{
+            color: variables.callToActionColor
+            }}
+        />,
         handleClick: editMemory
     }
 
     const configDeleteButton = {
         theme: theme,
-        icon: <DeleteIcon />,
+        icon: <DeleteIcon sx={{
+            color: variables.callToActionColor
+            }}
+        />,
         handleClick: openDeleteMemoryModal
     }
 
@@ -139,7 +146,7 @@ const Memory = (props) => {
 
     return (
         <div className='memory-wrapper'>
-            <div className='border'>
+            <div className='border' style={{ backgroundColor: variables.primaryColor }}>
                 <div className='image'>
                     <Slider {...settings}>
                         {memories.length ?

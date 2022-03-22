@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom';
+import { createTheme } from '@mui/material';
 
 // components
 import FormInput from '../../components/FormInput';
@@ -12,6 +13,7 @@ import { setCurrentMemoryJar } from '../../redux/MemoryJar/memoryJarActions';
 import * as memoryJarService from '../../services/memoryJarService'
 
 import './styles.scss'
+import variables from '../../styles.scss'
 
 const initialErrors = {};
 
@@ -267,6 +269,14 @@ const JarForm = (props) => {
         return (!email || errors.emailError)
     };
 
+    const theme = createTheme({
+        palette: {
+            primary: {
+                main: variables.callToActionColor
+            },
+        }
+    });
+
     return (
         <div className='jar-wrapper'>
             <div className='memory-jar-form'>
@@ -309,7 +319,13 @@ const JarForm = (props) => {
                         onChange={handleChangeEmail}
                         variant='standard'
                     />
-                    <Button type='submit' label='Share' handleClick={handleEmailInviteSubmit} disabled={isEmailInvalid()}/>
+                    <Button
+                        theme={theme}
+                        type='submit'
+                        label='Share'
+                        handleClick={handleEmailInviteSubmit}
+                        disabled={isEmailInvalid()}
+                    />
                 </form>
                 <div className='jar-permissions'>
                     <div className='permissions-headers'>
@@ -336,6 +352,7 @@ const JarForm = (props) => {
                     </div>
                 </div>
                 <Button 
+                    theme={theme}
                     type='submit'
                     label='Submit'
                     disabled={isFormInvalid()}
