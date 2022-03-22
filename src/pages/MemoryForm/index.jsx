@@ -26,8 +26,7 @@ const MemoryForm = (props) => {
     const [errors, setErrors] = useState(initialErrors);
     const [formData, setFormData] = useState({
         title: '',
-        description: '',
-        isFavorited: false
+        description: ''
     });
     const [file, setFile] = useState(null);
     const [defaultImg, setDefaultImg] = useState(DefaultImg);
@@ -56,8 +55,14 @@ const MemoryForm = (props) => {
                 id, formData
             );
         } else {
+            console.log('Current time: ', Math.trunc(Date.now()/1000));
+            const formattedFormData = {
+                ...formData,
+                isFavorited: false,
+                timestamp: Math.trunc(Date.now()/1000)
+            };
             result = await memoryJarService.saveMemory(
-                id, formData, file
+                id, formattedFormData, file
             );
         };
         if (result) navigate(-1);
@@ -108,9 +113,8 @@ const MemoryForm = (props) => {
     };
 
     useEffect(() => {
-        let memory;
         if (currentMemoryJar && memoryId) {
-            memory = currentMemoryJar.memories.find(
+            const memory = currentMemoryJar.memories.find(
                 memory => memory.filename === memoryId
             );
             setDefaultImg(`https://memoryjar-springboot.herokuapp.com/jars/${id}/memories/${memoryId}`);

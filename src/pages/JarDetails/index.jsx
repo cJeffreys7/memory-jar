@@ -55,7 +55,7 @@ const JarDetails = (props) => {
             <DialogModal 
                 isOpen={deleteModal}
                 title={'Delete Memory Jar'}
-                description={'Are you sure you want to throw away this memory jar? Any memories in here will be thwon away as well!'}
+                description={'Are you sure you want to throw away this memory jar? Any memories in here will be thrown away as well!'}
                 confirmText={'Delete'}
                 cancelText={'Cancel'}
                 confirmHandleClick={deleteJar}
