@@ -6,6 +6,16 @@ const MemoryImage = ({ src, alt }) => {
     return (
         <div className='memory-image-wrapper'>
             <img
+                className='aspect-ratio-img'
+                style={imageLoaded ? {} : { display: 'none' }}
+                src={src}
+                alt={alt}
+                onLoad={() => {
+                    setImageLoaded(true);
+                }}
+            />
+            <img
+                className='blurred-img'
                 style={imageLoaded ? {} : { display: 'none' }}
                 src={src}
                 alt={alt}

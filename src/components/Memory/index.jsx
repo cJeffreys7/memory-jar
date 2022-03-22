@@ -146,20 +146,23 @@ const Memory = (props) => {
                             memories.map(
                                 memory => <MemoryImage src={memory.image.src} alt={memory.image.alt} key={memory.image.key} />
                                 )
-                            : <img src={DefaultImg} alt='Memory Jar Logo'/>
+                            : 
+                            <img
+                                className='default-img'
+                                src={DefaultImg}
+                                alt='Memory Jar Logo'
+                            />
                         }
                     </Slider>
                 </div>
                 {!(recentMemories?.length || favoriteMemories?.length) && 
                     <div className='action-button-wrapper'>
-                        <div className='admin-buttons'>
-                            {currentMemoryJar?.admins?.includes(currentUser?.id) &&
-                                <div>
-                                    <IconButton {...configEditButton}/>
-                                    <IconButton {...configDeleteButton}/>
-                                </div>
-                            }
-                        </div>
+                        {currentMemoryJar?.admins?.includes(currentUser?.id) &&
+                            <div className='admin-buttons'>
+                                <IconButton {...configEditButton}/>
+                                <IconButton {...configDeleteButton}/>
+                            </div>
+                        }
                         <div className='favorite-button'>
                             <IconButton
                                 {...configIconButton}
