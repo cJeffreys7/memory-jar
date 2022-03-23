@@ -31,7 +31,7 @@ const NavBar = (props) => {
 
     const configMainMenuIconButton = {
         icon: <MenuIcon />,
-        handleClick: () => navigate('/')
+        handleClick: () => navigate('/home')
     };
 
     const configNewMemoryJarIconButton = {
