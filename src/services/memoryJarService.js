@@ -149,7 +149,8 @@ const mapMemories = (jarId, memories) => {
                 alt: memory.title,
                 key: memory.filename
             },
-            isFavorited: memory.isFavorited
+            isFavorited: memory.isFavorited,
+            timestamp: memory.timestamp
         })
     );
     return mappedMemories;

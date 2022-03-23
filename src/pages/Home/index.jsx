@@ -11,6 +11,8 @@ import * as memoryJarService from '../../services/memoryJarService';
 
 import './styles.scss'
 
+const totalRecentMemories = 10;
+
 const Home = (props) => {
     const { currentUser, currentMemoryJar, clearCurrentMemoryJar } = props;
     const [memoryJars, setMemoryJars] = useState([]);
@@ -37,7 +39,10 @@ const Home = (props) => {
                     newestMemories = updatedMemories;
                 };
             };
-            setRecentMemories(newestMemories);
+            newestMemories.sort((a, b) => {
+                return b.timestamp - a.timestamp
+            });
+            setRecentMemories(newestMemories.slice(0, totalRecentMemories));
             setFavoriteMemories(favoritedMemories);
             setMemoryJars(ownerJars.data);
         };
