@@ -61,10 +61,16 @@ $full-width: 45vw;
                             height: $full-width;
                             width: $full-width;
 
+                            div {
+                                height: $full-width;
+                                width: $full-width;
+                                
                                 .default-img {
                                     height: $full-width;
                                     width: $full-width;
                                 }
+                            }
+
                         }
                     }
                 }
