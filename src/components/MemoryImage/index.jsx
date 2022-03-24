@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import Skeleton from '@mui/material/Skeleton';
 
-const MemoryImage = ({ src, alt }) => {
+import './styles.scss';
+
+const MemoryImage = ({ src, alt, defaultWidth }) => {
     const [imageLoaded, setImageLoaded] = useState(false);
     return (
         <div className='memory-image-wrapper'>
@@ -25,7 +27,7 @@ const MemoryImage = ({ src, alt }) => {
             />
             {!imageLoaded && 
                 <div className='skeleton-wrapper'>
-                    <Skeleton variant='rectangular' width={1024} height={1024} />
+                    <Skeleton variant='rectangular' width={defaultWidth} height={defaultWidth} />
                 </div>
             }
         </div>

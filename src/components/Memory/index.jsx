@@ -153,7 +153,12 @@ const Memory = (props) => {
                     <Slider {...settings}>
                         {memories.length ?
                             memories.map(
-                                memory => <MemoryImage src={memory.image.src} alt={memory.image.alt} key={memory.image.key} />
+                                memory => <MemoryImage
+                                            src={memory.image.src}
+                                            alt={memory.image.alt}
+                                            defaultWidth={1024}
+                                            key={memory.image.key}
+                                        />
                                 )
                             : 
                             <img

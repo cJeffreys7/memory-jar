@@ -1,6 +1,4 @@
-$full-height: 90vh;
-$full-slider-width: 92vh;
-$min-height: 40vw;
+$full-width: 75vw;
 
 .memory-wrapper {
     max-width: 90vw;
@@ -21,8 +19,8 @@ $min-height: 40vw;
             .slick-slider {
                 display: flex;
                 justify-content: center;
-                max-width: $full-slider-width;
-                width: 85vw;
+                width: $full-width;
+                height: $full-width;
 
                 .slick-arrow {
                     z-index: 2;
@@ -49,8 +47,6 @@ $min-height: 40vw;
                 }
 
                 .slick-list {
-                    min-height: $min-height;
-                    min-width: $min-height;
 
                     .slick-track {
                         display: flex;
@@ -59,40 +55,14 @@ $min-height: 40vw;
                         .slick-slide {
                             display: flex;
                             justify-content: center;
-
-                            div {
-                                display: flex;
-                                justify-content: center;
-                                align-items: center;
-                                // position: relative;
-                                // overflow: hidden;
-
-                                .aspect-ratio-img {
-                                    z-index: -1;
-                                    position: absolute;
-                                    max-height: $full-height;
-                                    min-height: $min-height;
-                                    max-width: $full-height;
-                                    min-width: $min-height;
-                                }
-
-                                .blurred-img {
-                                    z-index: -2;
-                                    height: $full-height;
-                                    width: $full-height;
-                                    filter: blur(16px);
-                                }
-
-                                .skeleton-wrapper {
-                                    height: $full-height;
-                                    width: $full-height;
-                                }
+                            align-items: center;
+                            height: $full-width;
+                            width: $full-width;
 
                                 .default-img {
-                                    height: $full-height;
-                                    width: $full-height;
+                                    height: $full-width;
+                                    width: $full-width;
                                 }
-                            }
                         }
                     }
                 }

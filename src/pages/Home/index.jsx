@@ -61,7 +61,7 @@ const Home = (props) => {
             <h2>Recent Memories</h2>
             <Memory recentMemories={recentMemories} />
             <div className='memory-jar-previews'>
-                {memoryJars?.map(jar => <MemoryJarPreview key={jar.jarId} jarId={jar.jarId}/>)}
+                {memoryJars?.map(jar => <MemoryJarPreview key={jar.jarId} jar={jar} />)}
             </div>
         </div>
     );

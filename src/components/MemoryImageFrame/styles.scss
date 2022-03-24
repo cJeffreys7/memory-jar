@@ -1,0 +1,52 @@
+$frame-color: rgb(235, 235, 235);
+
+.frame-wrapper {
+    border: 1px solid rgb(232, 232, 232);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 142px;
+    width: 128px;
+
+    #frame-top {
+        background-color: $frame-color;
+        width: 100%;
+        height: 8px;
+        position: absolute;
+        z-index: 3;
+    }
+
+    #frame-right {
+        background-color: $frame-color;
+        width: 8px;
+        height: 100%;
+        position: absolute;
+        z-index: 3;
+        left: 120px;
+    }
+
+    #frame-bottom {
+        background-color: $frame-color;
+        width: 100%;
+        height: 24px;
+        position: absolute;
+        z-index: 3;
+        top: 120px;
+    }
+
+    #frame-left {
+        background-color: $frame-color;
+        width: 8px;
+        height: 100%;
+        position: absolute;
+        z-index: 3;
+        right: 120px;
+    }
+
+    .image-element {
+        margin-top: 8px;
+        background-color: $frame-color;
+        width: 112px;
+        height: 112px;
+    }
+}
