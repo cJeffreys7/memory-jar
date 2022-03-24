@@ -23,7 +23,7 @@ const MemoryJarActionBar = (props) => {
             fontSize: iconSize,
             color: variables.callToActionColor,
             backgroundColor: variables.primaryColor,
-            borderRadius: '16px'
+            borderRadius: '8px'
             }}
         />
     };
@@ -33,7 +33,7 @@ const MemoryJarActionBar = (props) => {
             fontSize: iconSize,
             color: variables.callToActionColor,
             backgroundColor: variables.primaryColor,
-            borderRadius: '16px'
+            borderRadius: '8px'
             }}
         />
     };
@@ -43,7 +43,7 @@ const MemoryJarActionBar = (props) => {
             fontSize: iconSize,
             color: variables.callToActionColor,
             backgroundColor: variables.primaryColor,
-            borderRadius: '16px'
+            borderRadius: '8px'
             }}
         />
     };
@@ -53,7 +53,7 @@ const MemoryJarActionBar = (props) => {
             fontSize: iconSize,
             color: variables.callToActionColor,
             backgroundColor: variables.primaryColor,
-            borderRadius: '16px'
+            borderRadius: '8px'
             }}
         />
     };
