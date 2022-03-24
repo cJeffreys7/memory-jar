@@ -12,12 +12,22 @@ import './styles.scss'
 
 const MemoryJarPreview = ({ jar }) => {
     const memoryPreviews = memoryJarService.mapMemories(jar.jarId, jar.memories);
-    console.log('Mapped Memories: ', memoryPreviews);
+
     return (
         <div className='memory-jar-preview-wrapper'>
             <Link to={`/jars/${jar.jarId}`}>
                 <img className='preview-icon' src={MemoryJarIcon} alt="Memory Jar Preview" />
-                <MemoryImageFrame memory={memoryPreviews[0]} />
+                <div className='preview-images'>
+                    <div id='preview-image-1' className='preview-image'>
+                        <MemoryImageFrame memory={memoryPreviews[0]} />
+                    </div>
+                    <div id='preview-image-2' className='preview-image'>
+                        <MemoryImageFrame memory={memoryPreviews[1]} />
+                    </div>
+                    <div id='preview-image-3' className='preview-image'>
+                        <MemoryImageFrame memory={memoryPreviews[2]} />
+                    </div>
+                </div>
             </Link>
         </div>
     );

@@ -4,8 +4,33 @@
         max-height: 25vw;
     }
 
-    .frame-wrapper {
-        position: relative;
-        bottom: 96px;
+    .preview-images {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .preview-image {
+            width: 10vw;
+            height: 10vw;
+            position: relative;
+        }
+
+        #preview-image-1 {
+            bottom: 8.5vw;
+            left: 5vw;
+            transform: rotate(-15deg);
+        }
+
+        #preview-image-2 {
+            bottom: 13vw;
+            transform: rotate(5deg);
+            z-index: 4;
+        }
+
+        #preview-image-3 {
+            bottom: 10vw;
+            right: 5vw;
+            transform: rotate(20deg);
+        }
     }
 }

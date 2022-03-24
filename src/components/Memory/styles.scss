@@ -47,6 +47,8 @@ $full-width: 75vw;
                 }
 
                 .slick-list {
+                    height: $full-width;
+                    width: $full-width;
 
                     .slick-track {
                         display: flex;

@@ -16,7 +16,6 @@ const MemoryImageFrame = ({ memory }) => {
                 <MemoryImage
                     src={memory?.image.src}
                     alt={memory?.image.alt}
-                    defaultWidth={112}
                     key={memory?.image.key}
                 />
             </div>

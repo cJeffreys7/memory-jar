@@ -3,7 +3,7 @@ import Skeleton from '@mui/material/Skeleton';
 
 import './styles.scss';
 
-const MemoryImage = ({ src, alt, defaultWidth }) => {
+const MemoryImage = ({ src, alt }) => {
     const [imageLoaded, setImageLoaded] = useState(false);
     return (
         <div className='memory-image-wrapper'>
@@ -27,7 +27,7 @@ const MemoryImage = ({ src, alt, defaultWidth }) => {
             />
             {!imageLoaded && 
                 <div className='skeleton-wrapper'>
-                    <Skeleton variant='rectangular' width={defaultWidth} height={defaultWidth} />
+                    <Skeleton variant='rectangular' />
                 </div>
             }
         </div>
