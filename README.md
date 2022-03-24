@@ -44,3 +44,4 @@ Icebox
 - [ ] Users should be able to reset their passwords from their profile/account settings
 - [ ] Users should be able to reset their passwords from the login page
 - [ ] Users should receive a confirmation email to confirm email address upon signup
+- [ ] Users should be able to upload videos
