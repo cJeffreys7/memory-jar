@@ -244,10 +244,10 @@ const JarForm = (props) => {
                 emailError: true,
                 emailHelperText: 'Please enter an email to view this memory jar'
             };
-        } else if (viewerPermissions?.viewers && viewerPermissions.viewers.includes(email.toLowerCase())) {
+        } else if (viewerPermissions?.viewers && (viewerPermissions.viewers.includes(email.toLowerCase()) || email.toLowerCase() === currentUser?.id.toLowerCase())) {
             error = {
                 emailError: true,
-                emailHelperText: 'Email already sent to view this memory jar'
+                emailHelperText: 'Email already allowed to view this memory jar'
             };
         } else {
             const emailExpression = /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:+)\])/g;
@@ -337,7 +337,6 @@ const JarForm = (props) => {
                     <div className='permissions-headers'>
                         <h5 id='viewers-header-title'>Viewers</h5>
                         <h5>Can Edit</h5>
-                        <h5> </h5>
                     </div>
                     <div className='jar-permissions-border'>
                         <div className='jar-permission-viewers'>

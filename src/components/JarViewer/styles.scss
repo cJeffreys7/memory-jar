@@ -1,5 +1,17 @@
 .jar-viewer-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: minmax(96px, 1fr) minmax(96px, 1fr) 96px;
+
+    .jar-viewer-email {
+        text-align: start;
+        margin-left: 8px;
+        margin-right: 8px;
+        overflow: hidden;
+    }
+
+    .can-edit-switch {
+        display: flex;
+        justify-content: center;
+        padding-left: 24px;
+    }
 }
