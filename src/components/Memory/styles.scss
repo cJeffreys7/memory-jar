@@ -1,5 +1,6 @@
 $full-width: 45vw;
-$full-width-iPhone-X: 75vw;
+$full-width-iPhone-X: 85vw;
+$full-width-Galaxy-S6: 85vw;
 
 .memory-wrapper {
     max-width: 90vw;
@@ -85,13 +86,11 @@ $full-width-iPhone-X: 75vw;
             and (-webkit-min-device-pixel-ratio: 3) {
 
                 .slick-slider {
-                    display: flex;
-                    justify-content: center;
                     width: $full-width-iPhone-X;
                     height: $full-width-iPhone-X;
 
-                    .slick-prev::before, .slick-next::before {
-                        display: none;
+                    .slick-arrow {
+                        display: none !important;
                     }
 
                     .slick-list {
@@ -99,13 +98,8 @@ $full-width-iPhone-X: 75vw;
                         width: $full-width-iPhone-X;
 
                         .slick-track {
-                            display: flex;
-                            align-items: center;
 
                             .slick-slide {
-                                display: flex;
-                                justify-content: center;
-                                align-items: center;
                                 height: $full-width-iPhone-X;
                                 width: $full-width-iPhone-X;
 
@@ -116,6 +110,47 @@ $full-width-iPhone-X: 75vw;
                                     .default-img {
                                         height: $full-width-iPhone-X;
                                         width: $full-width-iPhone-X;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            /* ----------- Galaxy S8+ ----------- */
+
+            /* Portrait and Landscape */
+            @media screen 
+            and (min-device-width: 360px) 
+            and (max-device-height: 740px) 
+            and (-webkit-device-pixel-ratio: 4) {
+
+                .slick-slider {
+                    width: $full-width-Galaxy-S6;
+                    height: $full-width-Galaxy-S6;
+
+                    .slick-arrow {
+                        display: none !important;
+                    }
+
+                    .slick-list {
+                        height: $full-width-Galaxy-S6;
+                        width: $full-width-Galaxy-S6;
+
+                        .slick-track {
+
+                            .slick-slide {
+                                height: $full-width-Galaxy-S6;
+                                width: $full-width-Galaxy-S6;
+
+                                div {
+                                    height: $full-width-Galaxy-S6;
+                                    width: $full-width-Galaxy-S6;
+                                    
+                                    .default-img {
+                                        height: $full-width-Galaxy-S6;
+                                        width: $full-width-Galaxy-S6;
                                     }
                                 }
                             }
