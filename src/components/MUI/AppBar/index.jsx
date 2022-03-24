@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { clearCurrentMemoryJar } from '../../../redux/MemoryJar/memoryJarActions';
-import { AppBar, Toolbar, Typography } from '@mui/material';
+import { AppBar, Toolbar } from '@mui/material';
 
 // assets
 import MainMenuIcon from '../../../assets/memoryjar_icon.svg'
