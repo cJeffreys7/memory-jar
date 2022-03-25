@@ -57,7 +57,8 @@ const Home = (props) => {
 
     useEffect(() => {
         setCurrentPath('Home');
-    }, [])
+        // eslint-disable-next-line
+    }, []);
 
     return (
         <div className='home-wrapper'>

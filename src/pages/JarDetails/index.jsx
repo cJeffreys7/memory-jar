@@ -47,7 +47,8 @@ const JarDetails = (props) => {
 
     useEffect(() => {
         setCurrentPath('JarDetails');
-    }, [])
+        // eslint-disable-next-line
+    }, []);
 
     return (
         <div className='jar-details-wrapper'>

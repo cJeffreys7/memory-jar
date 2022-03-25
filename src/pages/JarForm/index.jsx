@@ -195,7 +195,7 @@ const JarForm = (props) => {
 
         setCurrentPath(currentMemoryJar ? 'Jars/Edit' : 'Jars/New');
         // eslint-disable-next-line
-    }, [currentMemoryJar])
+    }, [currentMemoryJar]);
 
     useEffect(() => {
         const getMemoryJar = async (jarId) => {
@@ -207,7 +207,7 @@ const JarForm = (props) => {
 
         getMemoryJar(id);
         // eslint-disable-next-line
-    }, [])
+    }, []);
 
 
     const titleValidation = () => {

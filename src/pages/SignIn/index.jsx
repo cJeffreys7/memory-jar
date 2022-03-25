@@ -103,6 +103,7 @@ const SignIn = (props) => {
 
     useEffect(() => {
         setCurrentPath('SignIn');
+        // eslint-disable-next-line
     }, []);
 
     const emailValidation = () => {

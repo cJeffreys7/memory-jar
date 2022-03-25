@@ -121,7 +121,8 @@ const SignUp = (props) => {
     }, [name, email, password, confirmPassword]);
 
     useEffect(() => {
-        setCurrentPath('SignUp')
+        setCurrentPath('SignUp');
+        // eslint-disable-next-line
     }, []);
 
     const nameValidation = () => {
