@@ -7,13 +7,13 @@
         justify-content: space-between;
         padding: 8px 16px 8px;
 
+        .MuiSvgIcon-root {
+            font-size: 48px;
+        }
+
         .user-nav-buttons {
             display: flex;
             gap: 32px;
-        }
-
-        .logout-icon {
-            font-size: 48px;
         }
     }
 

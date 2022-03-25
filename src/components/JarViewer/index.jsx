@@ -3,6 +3,7 @@ import { Button, FormControlLabel, styled } from '@mui/material';
 import Switch from '@mui/material/Switch';
 
 import './styles.scss'
+import variables from '../../styles.scss'
 
 const JarViewer = ({ email, canEdit, handleChange, handleOnClick }) => {
     const [editPermission, setEditPermission] = useState(Boolean(canEdit));
@@ -20,7 +21,7 @@ const JarViewer = ({ email, canEdit, handleChange, handleOnClick }) => {
             transform: 'translateX(16px)',
             color: '#fff',
             '& + .MuiSwitch-track': {
-                backgroundColor: theme.palette.mode === 'dark' ? '#2ECA45' : '#65C466',
+                backgroundColor: theme.palette.mode === 'dark' ? '#2ECA45' : variables.callToActionColor,
                 opacity: 1,
                 border: 0,
             },

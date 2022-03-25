@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { clearCurrentMemoryJar } from '../../redux/MemoryJar/memoryJarActions';
+import { setCurrentPath } from '../../redux/Path/pathActions';
 
 // components
 import Memory from '../../components/Memory';
@@ -14,7 +15,7 @@ import './styles.scss'
 const totalRecentMemories = 10;
 
 const Home = (props) => {
-    const { currentUser, currentMemoryJar, clearCurrentMemoryJar } = props;
+    const { currentUser, currentMemoryJar, clearCurrentMemoryJar, setCurrentPath } = props;
     const [memoryJars, setMemoryJars] = useState([]);
     const [recentMemories, setRecentMemories] = useState([]);
     const [favoriteMemories, setFavoriteMemories] = useState([]);
@@ -52,7 +53,11 @@ const Home = (props) => {
             clearCurrentMemoryJar();
         };
         // eslint-disable-next-line
-    }, [currentUser?.id])
+    }, [currentUser?.id]);
+
+    useEffect(() => {
+        setCurrentPath('Home');
+    }, [])
 
     return (
         <div className='home-wrapper'>
@@ -69,16 +74,19 @@ const Home = (props) => {
 
 Home.defaultProps = {
     currentUser: null,
-    currentMemoryJar: null
-}
+    currentMemoryJar: null,
+    currentPath: null
+};
 
-const mapStateToProps = ({ user, memoryJar }) => ({
+const mapStateToProps = ({ user, memoryJar, path }) => ({
     currentUser: user.currentUser,
-    currentMemoryJar: memoryJar.currentMemoryJar
+    currentMemoryJar: memoryJar.currentMemoryJar,
+    currentPath: path.currentPath
 });
 
 const mapDispatchToProps = dispatch => ({
-    clearCurrentMemoryJar: memoryJar => dispatch(clearCurrentMemoryJar(memoryJar))
+    clearCurrentMemoryJar: memoryJar => dispatch(clearCurrentMemoryJar(memoryJar)),
+    setCurrentPath: path => dispatch(setCurrentPath(path))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

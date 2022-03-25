@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { connect } from 'react-redux';
 import { createTheme } from '@mui/material';
+import { connect } from 'react-redux';
+import { setCurrentPath } from '../../redux/Path/pathActions';
 
 // components
 import Dropzone from '../../components/Dropzone';
@@ -21,7 +22,7 @@ const initialErrors = {};
 
 const MemoryForm = (props) => {
     const navigate = useNavigate();
-    const { currentMemoryJar } = props;
+    const { currentMemoryJar, setCurrentPath } = props;
     const { id, memoryId } = useParams();
     const [errors, setErrors] = useState(initialErrors);
     const [formData, setFormData] = useState({
@@ -122,6 +123,8 @@ const MemoryForm = (props) => {
                 ...memory
             });
         };
+
+        setCurrentPath(currentMemoryJar ? 'Memories/Edit' : 'Memories/New');
         // eslint-disable-next-line
     }, [currentMemoryJar]);
 
@@ -205,11 +208,18 @@ const MemoryForm = (props) => {
 };
 
 MemoryForm.defaultProps = {
-    currentUser: null
+    currentUser: null,
+    currentMemoryJar: null,
+    currentPath: null
 };
 
-const mapStateToProps = ({ memoryJar }) => ({
-    currentMemoryJar: memoryJar.currentMemoryJar
+const mapStateToProps = ({ memoryJar, path }) => ({
+    currentMemoryJar: memoryJar.currentMemoryJar,
+    currentPath: path.currentPath
 });
 
-export default connect(mapStateToProps, null)(MemoryForm);
+const mapDispatchToProps = dispatch => ({
+    setCurrentPath: path => dispatch(setCurrentPath(path))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(MemoryForm);

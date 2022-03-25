@@ -3,28 +3,28 @@ import Button from '@mui/material/Button';
 import { ThemeProvider } from '@mui/material';
 import { createTheme } from '@mui/material';
 
+import variables from '../../../styles.scss'
+
 function IconButton({ theme, color, icon, handleClick, isPressed }) {
     const [pressed, setPressed] = useState(false);
 
     const onClick = () => {
-        // if (isPressed === null) setPressed(!pressed);
         if (isPressed === null) {
-            console.log('isPressed is null, use pressed state instead');
-            setPressed(!pressed)
+            setPressed(!pressed);
         };
         if (handleClick) handleClick();
-    }
+    };
 
     const defaultTheme = createTheme({
         palette: {
             primary: {
-                main: '#000000'
+                main: variables.callToActionColor
             },
             secondary: {
                 main: '#000000'
             }
         }
-    })
+    });
 
     return (
         <ThemeProvider theme={theme ? theme : defaultTheme}>
@@ -36,6 +36,6 @@ function IconButton({ theme, color, icon, handleClick, isPressed }) {
             </Button>
         </ThemeProvider>
     );
-}
+};
 
 export default IconButton;

@@ -14,13 +14,14 @@ import * as memoryJarService from '../../services/memoryJarService'
 
 import './styles.scss'
 import variables from '../../styles.scss'
+import { setCurrentPath } from '../../redux/Path/pathActions';
 
 const initialErrors = {};
 
 const JarForm = (props) => {
     const navigate = useNavigate();
     const { id } = useParams();
-    const { currentUser, currentMemoryJar, setCurrentMemoryJar } = props;
+    const { currentUser, currentMemoryJar, setCurrentMemoryJar, setCurrentPath } = props;
     const [errors, setErrors] = useState(initialErrors);
     const [formData, setFormData] = useState({
         owner: currentUser?.id,
@@ -191,6 +192,8 @@ const JarForm = (props) => {
             viewers: currentMemoryJar ? currentMemoryJar.viewers : [],
             admins: currentMemoryJar ? currentMemoryJar.admins : []
         });
+
+        setCurrentPath(currentMemoryJar ? 'Jars/Edit' : 'Jars/New');
         // eslint-disable-next-line
     }, [currentMemoryJar])
 
@@ -369,16 +372,20 @@ const JarForm = (props) => {
 };
 
 JarForm.defaultProps = {
-    currentUser: null
+    currentUser: null,
+    currentMemoryJar: null,
+    currentPath: null
 };
 
-const mapStateToProps = ({ user, memoryJar }) => ({
+const mapStateToProps = ({ user, memoryJar, path }) => ({
     currentUser: user.currentUser,
-    currentMemoryJar: memoryJar.currentMemoryJar
+    currentMemoryJar: memoryJar.currentMemoryJar,
+    currentPath: path.currentPath
 });
 
 const mapDispatchToProps = dispatch => ({
-    setCurrentMemoryJar: memoryJar => dispatch(setCurrentMemoryJar(memoryJar))
+    setCurrentMemoryJar: memoryJar => dispatch(setCurrentMemoryJar(memoryJar)),
+    setCurrentPath: path => dispatch(setCurrentPath(path))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(JarForm);

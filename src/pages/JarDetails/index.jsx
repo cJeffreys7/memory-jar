@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { setCurrentMemoryJar } from '../../redux/MemoryJar/memoryJarActions';
+import { setCurrentPath } from '../../redux/Path/pathActions';
 
 // components
 import Memory from '../../components/Memory';
@@ -16,7 +17,7 @@ import DialogModal from '../../components/MUI/DialogModal';
 const JarDetails = (props) => {
     const navigate = useNavigate();
     const { id } = useParams();
-    const { currentMemoryJar, setCurrentMemoryJar } = props;
+    const { currentMemoryJar, setCurrentMemoryJar, setCurrentPath } = props;
     const [loading, setLoading] = useState(true);
     const [deleteModal, setDeleteModal] = useState(false);
 
@@ -44,6 +45,10 @@ const JarDetails = (props) => {
         // eslint-disable-next-line
     }, [id]);
 
+    useEffect(() => {
+        setCurrentPath('JarDetails');
+    }, [])
+
     return (
         <div className='jar-details-wrapper'>
             <h1>{currentMemoryJar?.title}</h1>
@@ -65,12 +70,19 @@ const JarDetails = (props) => {
     );
 };
 
-const mapStateToProps = ({ memoryJar }) => ({
-    currentMemoryJar: memoryJar.currentMemoryJar
+JarDetails.defaultProps = {
+    currentMemoryJar: null,
+    currentPath: null
+};
+
+const mapStateToProps = ({ memoryJar, path }) => ({
+    currentMemoryJar: memoryJar.currentMemoryJar,
+    currentPath: path.currentPath
 });
 
 const mapDispatchToProps = dispatch => ({
-    setCurrentMemoryJar: memoryJar => dispatch(setCurrentMemoryJar(memoryJar))
+    setCurrentMemoryJar: memoryJar => dispatch(setCurrentMemoryJar(memoryJar)),
+    setCurrentPath: path => dispatch(setCurrentPath(path))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(JarDetails);

@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { setCurrentPath } from '../../redux/Path/pathActions';
 
 // assets
 import Icon from '../../assets/memoryjar_icon.svg'
@@ -27,6 +29,7 @@ const initialErrors = {}
 
 const SignUp = (props) => {
     const navigate = useNavigate();
+    const { setCurrentPath } = props;
     const [formData, setFormData] = useState(initialFormData);
     const [errors, setErrors] = useState(initialErrors);
 
@@ -116,6 +119,10 @@ const SignUp = (props) => {
         formCheck();
         // eslint-disable-next-line
     }, [name, email, password, confirmPassword]);
+
+    useEffect(() => {
+        setCurrentPath('SignUp')
+    }, []);
 
     const nameValidation = () => {
         let error = {};
@@ -303,4 +310,16 @@ const SignUp = (props) => {
     );
 };
 
-export default SignUp;
+SignUp.defaultProps = {
+    currentPath: null
+};
+
+const mapStateToProps = ({ path }) => ({
+    currentPath: path.currentPath
+});
+
+const mapDispatchToProps = dispatch => ({
+    setCurrentPath: path => dispatch(setCurrentPath(path))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp);
