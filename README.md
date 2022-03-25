@@ -40,6 +40,8 @@ MVP
 
 Icebox
 - [x] Users should see the (#) most recent photos added into the jars they can view
+- [ ] Users should be able to press a memory and view it fullscreen
+- [ ] Users prefer to see memories slide instead of fade to next memory
 - [ ] Users should be able to create a profile
 - [ ] Users should be able to reset their passwords from their profile/account settings
 - [ ] Users should be able to reset their passwords from the login page
