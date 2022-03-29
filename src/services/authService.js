@@ -51,8 +51,6 @@ const signUpUser = async (name, email, password) => {
 
     let attributes = [emailAttribute, nameAttribute];
 
-    console.log('Attempting to sign up user: ', userPool);
-
     return new Promise((resolve, reject) =>
         userPool.signUp(email, password, attributes, null, ((error, result) => {
             if (error) {

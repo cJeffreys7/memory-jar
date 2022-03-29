@@ -32,7 +32,8 @@ const App = (props) => {
   };
 
   const handleSignUpOrSignIn = (email) => {
-    // const result = authService.getUser();
+    const result = authService.getUser();
+    console.log('Signed in user: ', result);
     setCurrentUser({
       id: email.toLowerCase()
     });
@@ -43,6 +44,8 @@ const App = (props) => {
       setCurrentUser({id: authService.getUser()?.email.toLowerCase()});
       // eslint-disable-next-line
   }, []);
+
+  console.log('Check Auth user: ', authService.getUser());
 
   return (
     <div className="App">

@@ -10,7 +10,8 @@ const getToken = () => {
         const payload = JSON.parse(Buffer.from(token.split('.')[1], 'base64'));
         // const timeOffset = 18000 -> 5 hours offset of Cognito service time zone
         const timeOffset = 18000
-        if (payload.exp + timeOffset > (Date.now() / 1000)) {
+        console.log(` Expiration date: ${payload.exp}, current date: ${Date.now() / 1000}`);
+        if (payload.exp < (Date.now() / 1000)) {
             console.log('Token expired');
             localStorage.removeItem('token');
             token = null;
