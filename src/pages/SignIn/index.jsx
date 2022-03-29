@@ -46,7 +46,7 @@ const SignIn = (props) => {
         e.preventDefault();
         try {
             await authService.loginUser(email, password);
-            props.handleSignUpOrSignIn(email);
+            props.handleSignUpOrSignIn();
             setFormData(initialFormData);
             setErrors(initialErrors);
             navigate('/home');

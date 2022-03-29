@@ -13,33 +13,31 @@ const getJar = async (jarId) => {
 }
 
 const getJarsByViewer = async (userId) => {
-    try {
-        const result = axios.get(
-            `${baseUrl}/jars/index/${userId}`,
-            {
-                headers: {
-                    "Access-Control-Allow-Origin": "*"
-                }
+    const result = axios.get(
+        `${baseUrl}/jars/index/${userId}`,
+        {
+            headers: {
+                "Access-Control-Allow-Origin": "*"
             }
-        );
-        return result;
-    } catch (err) {
-        console.log('Failed to get Jars by Owner: ', err);
-    }
-}
+        }
+    ).catch(err => {
+        console.log('Error retrieving Jars: ', err);
+        return null;
+    });
+    return result;
+};
 
 const getMemory = async (jarId, filename, alt) => {
     return <img src={`${baseUrl}/jars/${jarId}/memories/${filename}`} alt={alt} />
 }
 
 const saveJar = async (memoryJarData) => {
-    try {
-        axios.post(`${baseUrl}/jars/new`, memoryJarData);
-        return true;
-    } catch (err) {
+    axios.post(`${baseUrl}/jars/new`, memoryJarData)
+    .catch(err => {
         console.log('Failed to create Memory Jar: ', err);
         return false;
-    }
+    });
+    return true;
 }
 
 const saveMemory = async (jarId, memoryData, file) => {

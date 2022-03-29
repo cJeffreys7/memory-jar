@@ -7,25 +7,29 @@ const MemoryImage = ({ src, alt }) => {
     const [imageLoaded, setImageLoaded] = useState(false);
     return (
         <div className='memory-image-wrapper'>
-            <img
-                className='aspect-ratio-img'
-                style={imageLoaded ? {} : { display: 'none' }}
-                src={src}
-                alt={alt}
-                onLoad={() => {
-                    setImageLoaded(true);
-                }}
-            />
-            <img
-                className='blurred-img'
-                style={imageLoaded ? {} : { display: 'none' }}
-                src={src}
-                alt={alt}
-                onLoad={() => {
-                    setImageLoaded(true);
-                }}
-            />
-            {!imageLoaded && 
+            {src && 
+                <>
+                    <img
+                        className='aspect-ratio-img'
+                        style={imageLoaded ? {} : { display: 'none' }}
+                        src={src}
+                        alt={alt}
+                        onLoad={() => {
+                            setImageLoaded(true);
+                        }}
+                    />
+                    <img
+                        className='blurred-img'
+                        style={imageLoaded ? {} : { display: 'none' }}
+                        src={src}
+                        alt={alt}
+                        onLoad={() => {
+                            setImageLoaded(true);
+                        }}
+                    />
+                </>
+            }
+            {(!imageLoaded) && 
                 <div className='skeleton-wrapper'>
                     <Skeleton variant='rectangular' />
                 </div>

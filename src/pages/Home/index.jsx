@@ -16,17 +16,18 @@ import useInterval from '../../hooks/useInterval';
 import './styles.scss'
 
 const totalRecentMemories = 10;
+const circuitBreakerTripCount = 5;
 
 const Home = (props) => {
     const { currentUser, currentMemoryJar, clearCurrentMemoryJar, setCurrentPath } = props;
     const [memoryJars, setMemoryJars] = useState([]);
     const [recentMemories, setRecentMemories] = useState([]);
     const [favoriteMemories, setFavoriteMemories] = useState([]);
+    const [circuitBreakerCount, setCircuitBreakerCount] = useState(0);
 
     const getMemories = async () => {
         const usersJars = await memoryJarService.getJarsByViewer(currentUser?.id);
-        if (usersJars.data.length) {
-            console.log('Users Jar Data: ', usersJars.data);
+        if (usersJars?.data.length) {
             let newestMemories = [];
             let favoritedMemories = [];
             for (const jar of usersJars.data) {
@@ -59,6 +60,20 @@ const Home = (props) => {
                 setMemoryJars([defaultJar.data]);
             } else {
                 console.log('No User Jar Data found');
+                if (circuitBreakerCount + 1 === circuitBreakerTripCount) {
+                    setRecentMemories([]);
+                } else {
+                    const loadingMemory = {
+                        image: {
+                            src: null,
+                            alt: 'loading image',
+                            key: 'loading-image'
+                        },
+                        isFavorited: false,
+                        timestamp: 0
+                    };
+                    setRecentMemories([loadingMemory]);
+                };
             };
         };
     };
@@ -74,11 +89,13 @@ const Home = (props) => {
 
     useInterval(() => {
         getMemories();
-    }, 1000, memoryJars.length === 0);
+        console.warn(`Attempt Count: ${circuitBreakerCount + 1}, Circuit Breaker Trip Count: ${circuitBreakerTripCount}`);
+        setCircuitBreakerCount(circuitBreakerCount + 1);
+    }, 10000, memoryJars.length === 0 && circuitBreakerCount < circuitBreakerTripCount);
 
     return (
         <div className='home-wrapper'>
-            {favoriteMemories?.length && 
+            {favoriteMemories?.length > 0 && 
                 <>
                     <h2>Favorite Memories</h2>
                     <Memory showFavoritesOnly={true} favoriteMemories={favoriteMemories} />
@@ -86,6 +103,9 @@ const Home = (props) => {
             }
             <h2>Recent Memories</h2>
             <Memory recentMemories={recentMemories} />
+            {(circuitBreakerCount >= circuitBreakerTripCount) && 
+                <h4 className='error-message'>The server isn't working right now, try again later</h4>
+            }
             <div className='memory-jar-previews'>
                 {memoryJars?.map(jar => <MemoryJarPreview key={jar.jarId} jar={jar} />)}
             </div>
