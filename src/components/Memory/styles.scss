@@ -164,6 +164,7 @@ $full-width-Galaxy-S6: 85vw;
             display: flex;
             justify-content: space-between;
             width: 100%;
+            height: 36px;
             margin-top: 8px;
 
             .admin-buttons {
@@ -175,6 +176,7 @@ $full-width-Galaxy-S6: 85vw;
                 display: flex;
                 justify-content: flex-end;
                 align-items: flex-end;
+                width: 100%;
 
                 .MuiButton-root {
                     position: absolute;
