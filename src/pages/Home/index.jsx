@@ -10,6 +10,9 @@ import MemoryJarPreview from '../../components/MemoryJarPreview';
 // services
 import * as memoryJarService from '../../services/memoryJarService';
 
+// hooks
+import useInterval from '../../hooks/useInterval';
+
 import './styles.scss'
 
 const totalRecentMemories = 10;
@@ -20,12 +23,13 @@ const Home = (props) => {
     const [recentMemories, setRecentMemories] = useState([]);
     const [favoriteMemories, setFavoriteMemories] = useState([]);
 
-    useEffect(() => {
-        const getMemories = async () => {
-            const ownerJars = await memoryJarService.getJarsByViewer(currentUser?.id);
+    const getMemories = async () => {
+        const usersJars = await memoryJarService.getJarsByViewer(currentUser?.id);
+        if (usersJars.data.length) {
+            console.log('Users Jar Data: ', usersJars.data);
             let newestMemories = [];
             let favoritedMemories = [];
-            for (const jar of ownerJars.data) {
+            for (const jar of usersJars.data) {
                 if (jar.memories?.length) {
                     let mappedMemories = memoryJarService.mapMemories(jar.jarId, jar.memories);
                     // Clone mappedMemories instead of shallow copy so all memories are iterated through
@@ -45,25 +49,41 @@ const Home = (props) => {
             });
             setRecentMemories(newestMemories.slice(0, totalRecentMemories));
             setFavoriteMemories(favoritedMemories);
-            setMemoryJars(ownerJars.data);
+            setMemoryJars(usersJars.data);
+        } else {
+            if (usersJars?.data.length === 0) {
+                console.log('0 Jars for User');
+                const defaultJar = await memoryJarService.getJar('e54ff87b-639c-4488-9eac-f13295c8703b');
+                const defaultMemories = memoryJarService.mapMemories(defaultJar.data.jarId, defaultJar.data.memories);
+                setRecentMemories(defaultMemories);
+                setMemoryJars([defaultJar.data]);
+            } else {
+                console.log('No User Jar Data found');
+            };
         };
+    };
 
+    useEffect(() => {
+        setCurrentPath('Home');
         getMemories();
         if (currentMemoryJar) {
             clearCurrentMemoryJar();
         };
         // eslint-disable-next-line
-    }, [currentUser?.id]);
-
-    useEffect(() => {
-        setCurrentPath('Home');
-        // eslint-disable-next-line
     }, []);
+
+    useInterval(() => {
+        getMemories();
+    }, 1000, memoryJars.length === 0);
 
     return (
         <div className='home-wrapper'>
-            <h2>Favorite Memories</h2>
-            <Memory showFavoritesOnly={true} favoriteMemories={favoriteMemories} />
+            {favoriteMemories?.length && 
+                <>
+                    <h2>Favorite Memories</h2>
+                    <Memory showFavoritesOnly={true} favoriteMemories={favoriteMemories} />
+                </>
+            }
             <h2>Recent Memories</h2>
             <Memory recentMemories={recentMemories} />
             <div className='memory-jar-previews'>

@@ -87,7 +87,6 @@ const JarForm = (props) => {
     const handleEmailInviteSubmit = e => {
         e.preventDefault();
         setEmailSubmission(true);
-        console.log(`Sending invite to ${viewerPermissions.email}`);
         setViewerPermissions({
             ...viewerPermissions,
             viewers: [
